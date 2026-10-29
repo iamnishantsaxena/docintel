@@ -1,0 +1,43 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 742 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (ACME Supplies Ltd) Tj T* (INVOICE) Tj T* (Invoice No: IN-55377) Tj T* (Invoice Date: 2024-05-10) Tj T* (Due Date: 2024-06-09) Tj T* (Bill To: Hooli Labs) Tj T* () Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Label Roll 100mm   29   $437.75   $12,694.75) Tj T* (Safety Gloves L   29   $561.73   $16,290.17) Tj T* (Shipping Pallet   9   $719.49   $6,475.41) Tj T* (Shipping Pallet   13   $321.42   $4,178.46) Tj T* (Standing Desk   6   $230.47   $1,382.82) Tj T* (Steel Bracket M8   22   $730.09   $16,061.98) Tj T* (Label Roll 100mm   6   $419.99   $2,519.94) Tj T* (Toner Cartridge   16   $484.24   $7,747.84) Tj T* (Steel Bracket M8   17   $748.10   $12,717.70) Tj T* (continued on next page) Tj T* ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 723 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (Invoice IN-55377 - page 2) Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Safety Gloves L   13   $27.82   $361.66) Tj T* (Printer Paper A4 \(box\)   27   $503.29   $13,588.83) Tj T* (Standing Desk   27   $688.53   $18,590.31) Tj T* (Monitor Arm   14   $495.46   $6,936.44) Tj T* (Cable Kit   18   $444.78   $8,006.04) Tj T* (Printer Paper A4 \(box\)   4   $654.42   $2,617.68) Tj T* (LED Desk Lamp   18   $754.22   $13,575.96) Tj T* (Cable Kit   24   $166.48   $3,995.52) Tj T* (LED Desk Lamp   33   $695.16   $22,940.28) Tj T* (Ergonomic Office Chair   14   $122.87   $1,720.18) Tj T* () Tj T* (Subtotal: $172,401.97) Tj T* (Tax \(8%\): $13,792.16) Tj T* (Total: $186,194.13) Tj T* ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000367 00000 n 
+0000001160 00000 n 
+0000001309 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+2083
+%%EOF

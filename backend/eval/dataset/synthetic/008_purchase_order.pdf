@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 625 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (PURCHASE ORDER) Tj T* (PO Number: PO-9725) Tj T* (Order Date: 2025-06-14) Tj T* (Vendor: Northwind Traders) Tj T* (Buyer: Stark Manufacturing) Tj T* (Ship To: 1 Dock Road, Port City) Tj T* () Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Toner Cartridge   13   €315.27   €4,098.51) Tj T* (Safety Gloves L   26   €298.69   €7,765.94) Tj T* (Label Roll 100mm   13   €679.97   €8,839.61) Tj T* (Steel Bracket M8   32   €467.54   €14,961.28) Tj T* (Shipping Pallet   2   €38.11   €76.22) Tj T* () Tj T* (Subtotal: €35,741.56) Tj T* (Tax \(8%\): €2,859.32) Tj T* (Total: €38,600.88) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1037
+%%EOF

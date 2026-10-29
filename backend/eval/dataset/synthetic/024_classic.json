@@ -1,0 +1,27 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Maple Leaf Hardware Inc.",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "INV-10779",
+  "po_number": null,
+  "document_date": "2025-01-31",
+  "due_date": "2025-03-02",
+  "currency": "EUR",
+  "subtotal": "36555.36",
+  "tax": "2924.43",
+  "total": "39479.79",
+  "line_items": [
+    {
+      "description": "Toner Cartridge",
+      "quantity": "24",
+      "unit_price": "175.30",
+      "amount": "4207.20"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "39",
+      "unit_price": "829.44",
+      "amount": "32348.16"
+    }
+  ]
+}

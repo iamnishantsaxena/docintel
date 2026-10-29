@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Blue Harbor Logistics GmbH",
+  "customer_name": "Globex Corp",
+  "document_number": "IN-22397",
+  "po_number": "PO-7240",
+  "document_date": "2024-03-13",
+  "due_date": "2024-04-27",
+  "currency": "EUR",
+  "subtotal": "35357.17",
+  "tax": "2828.57",
+  "total": "38185.74",
+  "line_items": [
+    {
+      "description": "Safety Gloves L",
+      "quantity": "30",
+      "unit_price": "244.44",
+      "amount": "7333.20"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "11",
+      "unit_price": "354.13",
+      "amount": "3895.43"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "29",
+      "unit_price": "6.24",
+      "amount": "180.96"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "17",
+      "unit_price": "478.78",
+      "amount": "8139.26"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "22",
+      "unit_price": "718.56",
+      "amount": "15808.32"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "NORTHWIND TRADERS",
+  "customer_name": "Globex Corp",
+  "document_number": "INV-45833",
+  "po_number": null,
+  "document_date": "2025-06-08",
+  "due_date": "2025-08-07",
+  "currency": "USD",
+  "subtotal": "6296.92",
+  "tax": "503.75",
+  "total": "6800.67",
+  "line_items": [
+    {
+      "description": "Cable Kit",
+      "quantity": "3",
+      "unit_price": "877.34",
+      "amount": "2632.02"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "5",
+      "unit_price": "732.98",
+      "amount": "3664.90"
+    }
+  ]
+}

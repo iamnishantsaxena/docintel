@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 647 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (TAX INVOICE) Tj T* (Vendor: Blue Harbor Logistics GmbH) Tj T* (Invoice # IN-22397) Tj T* (Date: March 13, 2024) Tj T* (Payment due: April 27, 2024) Tj T* (Customer: Globex Corp) Tj T* (Your ref \(PO\): PO-7240) Tj T* () Tj T* (Item   Qty   Price   Line Total) Tj T* (Safety Gloves L   30   €244.44   €7,333.20) Tj T* (Label Roll 100mm   11   €354.13   €3,895.43) Tj T* (Shipping Pallet   29   €6.24   €180.96) Tj T* (Steel Bracket M8   17   €478.78   €8,139.26) Tj T* (Standing Desk   22   €718.56   €15,808.32) Tj T* () Tj T* (Net amount: €35,357.17) Tj T* (VAT 8%: €2,828.57) Tj T* (Amount Due: €38,185.74) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1059
+%%EOF

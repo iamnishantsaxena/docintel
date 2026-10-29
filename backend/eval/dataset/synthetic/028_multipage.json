@@ -1,0 +1,129 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "ACME Supplies Ltd",
+  "customer_name": "Hooli Labs",
+  "document_number": "IN-55377",
+  "po_number": null,
+  "document_date": "2024-05-10",
+  "due_date": "2024-06-09",
+  "currency": "USD",
+  "subtotal": "172401.97",
+  "tax": "13792.16",
+  "total": "186194.13",
+  "line_items": [
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "29",
+      "unit_price": "437.75",
+      "amount": "12694.75"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "29",
+      "unit_price": "561.73",
+      "amount": "16290.17"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "9",
+      "unit_price": "719.49",
+      "amount": "6475.41"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "13",
+      "unit_price": "321.42",
+      "amount": "4178.46"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "6",
+      "unit_price": "230.47",
+      "amount": "1382.82"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "22",
+      "unit_price": "730.09",
+      "amount": "16061.98"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "6",
+      "unit_price": "419.99",
+      "amount": "2519.94"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "16",
+      "unit_price": "484.24",
+      "amount": "7747.84"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "17",
+      "unit_price": "748.10",
+      "amount": "12717.70"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "13",
+      "unit_price": "27.82",
+      "amount": "361.66"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "27",
+      "unit_price": "503.29",
+      "amount": "13588.83"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "27",
+      "unit_price": "688.53",
+      "amount": "18590.31"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "14",
+      "unit_price": "495.46",
+      "amount": "6936.44"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "18",
+      "unit_price": "444.78",
+      "amount": "8006.04"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "4",
+      "unit_price": "654.42",
+      "amount": "2617.68"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "18",
+      "unit_price": "754.22",
+      "amount": "13575.96"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "24",
+      "unit_price": "166.48",
+      "amount": "3995.52"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "33",
+      "unit_price": "695.16",
+      "amount": "22940.28"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "14",
+      "unit_price": "122.87",
+      "amount": "1720.18"
+    }
+  ]
+}

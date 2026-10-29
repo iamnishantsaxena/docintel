@@ -1,0 +1,27 @@
+{
+  "document_type": "purchase_order",
+  "supplier_name": "Orbital Print & Design",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "PO-3945",
+  "po_number": "PO-3945",
+  "document_date": "2025-04-21",
+  "due_date": null,
+  "currency": "USD",
+  "subtotal": "28252.00",
+  "tax": "5650.40",
+  "total": "33902.40",
+  "line_items": [
+    {
+      "description": "Monitor Arm",
+      "quantity": "20",
+      "unit_price": "689.88",
+      "amount": "13797.60"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "32",
+      "unit_price": "451.70",
+      "amount": "14454.40"
+    }
+  ]
+}

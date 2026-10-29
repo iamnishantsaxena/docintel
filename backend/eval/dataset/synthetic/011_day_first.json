@@ -1,0 +1,21 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Orbital Print & Design",
+  "customer_name": "Hooli Labs",
+  "document_number": "BL-67918",
+  "po_number": null,
+  "document_date": "2024-05-13",
+  "due_date": "2024-06-12",
+  "currency": "GBP",
+  "subtotal": "9589.68",
+  "tax": "0.00",
+  "total": "9589.68",
+  "line_items": [
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "12",
+      "unit_price": "799.14",
+      "amount": "9589.68"
+    }
+  ]
+}

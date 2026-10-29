@@ -11,11 +11,13 @@ build/
 coverage/
 *.sqlite3
 *.db
-Full_order_agent_application/database/
-Full_order_agent_application/tests/test_outputs/
 *.bak
 *.swp
 Thumbs.db
 *.class
 
 
+backend/.venv/
+backend/data/
+backend/.env
+.ruff_cache/

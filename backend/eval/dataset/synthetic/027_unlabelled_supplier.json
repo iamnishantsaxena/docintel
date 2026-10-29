@@ -1,0 +1,39 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "SUNRISE PACKAGING CO.",
+  "customer_name": "Wayne Hospitality Group",
+  "document_number": "INV-49935",
+  "po_number": null,
+  "document_date": "2025-06-07",
+  "due_date": "2025-07-22",
+  "currency": "USD",
+  "subtotal": "33663.39",
+  "tax": "2693.07",
+  "total": "36356.46",
+  "line_items": [
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "36",
+      "unit_price": "268.14",
+      "amount": "9653.04"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "6",
+      "unit_price": "66.34",
+      "amount": "398.04"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "27",
+      "unit_price": "592.45",
+      "amount": "15996.15"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "9",
+      "unit_price": "846.24",
+      "amount": "7616.16"
+    }
+  ]
+}

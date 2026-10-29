@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Kestrel Industrial Parts",
+  "customer_name": "Umbrella Retail",
+  "document_number": "IN-90204",
+  "po_number": null,
+  "document_date": "2025-06-11",
+  "due_date": "2025-06-26",
+  "currency": "GBP",
+  "subtotal": "28772.93",
+  "tax": "0.00",
+  "total": "28772.93",
+  "line_items": [
+    {
+      "description": "Standing Desk",
+      "quantity": "13",
+      "unit_price": "89.77",
+      "amount": "1167.01"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "14",
+      "unit_price": "579.03",
+      "amount": "8106.42"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "11",
+      "unit_price": "145.58",
+      "amount": "1601.38"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "22",
+      "unit_price": "788.88",
+      "amount": "17355.36"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "4",
+      "unit_price": "135.69",
+      "amount": "542.76"
+    }
+  ]
+}

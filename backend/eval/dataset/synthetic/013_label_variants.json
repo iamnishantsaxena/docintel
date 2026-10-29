@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Initech Office Solutions",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "BL-33460",
+  "po_number": null,
+  "document_date": "2025-04-08",
+  "due_date": "2025-06-07",
+  "currency": "EUR",
+  "subtotal": "21108.61",
+  "tax": "0.00",
+  "total": "21108.61",
+  "line_items": [
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "9",
+      "unit_price": "547.59",
+      "amount": "4928.31"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "8",
+      "unit_price": "515.77",
+      "amount": "4126.16"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "29",
+      "unit_price": "415.66",
+      "amount": "12054.14"
+    }
+  ]
+}

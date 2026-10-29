@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Initech Office Solutions",
+  "customer_name": "Globex Corp",
+  "document_number": "IN-55937",
+  "po_number": "PO-2929",
+  "document_date": "2025-07-24",
+  "due_date": "2025-08-23",
+  "currency": "EUR",
+  "subtotal": "46865.11",
+  "tax": "2343.26",
+  "total": "49208.37",
+  "line_items": [
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "38",
+      "unit_price": "750.18",
+      "amount": "28506.84"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "13",
+      "unit_price": "489.60",
+      "amount": "6364.80"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "7",
+      "unit_price": "719.43",
+      "amount": "5036.01"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "5",
+      "unit_price": "741.22",
+      "amount": "3706.10"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "4",
+      "unit_price": "812.84",
+      "amount": "3251.36"
+    }
+  ]
+}

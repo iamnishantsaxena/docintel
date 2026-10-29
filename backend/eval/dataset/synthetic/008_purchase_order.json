@@ -1,0 +1,45 @@
+{
+  "document_type": "purchase_order",
+  "supplier_name": "Northwind Traders",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "PO-9725",
+  "po_number": "PO-9725",
+  "document_date": "2025-06-14",
+  "due_date": null,
+  "currency": "EUR",
+  "subtotal": "35741.56",
+  "tax": "2859.32",
+  "total": "38600.88",
+  "line_items": [
+    {
+      "description": "Toner Cartridge",
+      "quantity": "13",
+      "unit_price": "315.27",
+      "amount": "4098.51"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "26",
+      "unit_price": "298.69",
+      "amount": "7765.94"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "13",
+      "unit_price": "679.97",
+      "amount": "8839.61"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "32",
+      "unit_price": "467.54",
+      "amount": "14961.28"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "2",
+      "unit_price": "38.11",
+      "amount": "76.22"
+    }
+  ]
+}

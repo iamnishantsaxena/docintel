@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Blue Harbor Logistics GmbH",
+  "customer_name": "Wayne Hospitality Group",
+  "document_number": "BL-13337",
+  "po_number": "PO-1950",
+  "document_date": "2024-02-19",
+  "due_date": "2024-03-05",
+  "currency": "USD",
+  "subtotal": "28171.93",
+  "tax": "5634.39",
+  "total": "33806.32",
+  "line_items": [
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "6",
+      "unit_price": "723.76",
+      "amount": "4342.56"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "28",
+      "unit_price": "78.97",
+      "amount": "2211.16"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "37",
+      "unit_price": "163.76",
+      "amount": "6059.12"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "15",
+      "unit_price": "828.07",
+      "amount": "12421.05"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "38",
+      "unit_price": "82.58",
+      "amount": "3138.04"
+    }
+  ]
+}

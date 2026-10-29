@@ -20,6 +20,16 @@ class Config:
     PDF_CHUNK_SIZE = int(os.getenv("PDF_CHUNK_SIZE", "2000"))
     PDF_CHUNK_OVERLAP = int(os.getenv("PDF_CHUNK_OVERLAP", "200"))
     PDF_MAX_SIZE_MB = float(os.getenv("PDF_MAX_SIZE_MB", "10.0"))
+
+    # DOCX Processing
+    DOCX_CHUNK_SIZE = int(os.getenv("DOCX_CHUNK_SIZE", "2000"))
+    DOCX_CHUNK_OVERLAP = int(os.getenv("DOCX_CHUNK_OVERLAP", "200"))
+    DOCX_MAX_SIZE_MB = float(os.getenv("DOCX_MAX_SIZE_MB", "10.0"))
+
+    # Excel Processing
+    EXCEL_CHUNK_SIZE = int(os.getenv("EXCEL_CHUNK_SIZE", "2000"))
+    EXCEL_CHUNK_OVERLAP = int(os.getenv("EXCEL_CHUNK_OVERLAP", "200"))
+    EXCEL_MAX_SIZE_MB = float(os.getenv("EXCEL_MAX_SIZE_MB", "10.0"))
     
     # Confidence Thresholds
     HIGH_CONFIDENCE = 0.8

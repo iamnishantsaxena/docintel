@@ -1,0 +1,117 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Kestrel Industrial Parts",
+  "customer_name": "Globex Corp",
+  "document_number": "BL-99322",
+  "po_number": null,
+  "document_date": "2024-05-02",
+  "due_date": "2024-07-01",
+  "currency": "USD",
+  "subtotal": "155040.12",
+  "tax": "31008.02",
+  "total": "186048.14",
+  "line_items": [
+    {
+      "description": "Cable Kit",
+      "quantity": "30",
+      "unit_price": "861.14",
+      "amount": "25834.20"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "10",
+      "unit_price": "803.10",
+      "amount": "8031.00"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "39",
+      "unit_price": "623.24",
+      "amount": "24306.36"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "23",
+      "unit_price": "205.85",
+      "amount": "4734.55"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "36",
+      "unit_price": "720.14",
+      "amount": "25925.04"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "9",
+      "unit_price": "29.54",
+      "amount": "265.86"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "1",
+      "unit_price": "853.04",
+      "amount": "853.04"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "7",
+      "unit_price": "691.70",
+      "amount": "4841.90"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "9",
+      "unit_price": "570.10",
+      "amount": "5130.90"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "13",
+      "unit_price": "278.11",
+      "amount": "3615.43"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "2",
+      "unit_price": "331.58",
+      "amount": "663.16"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "14",
+      "unit_price": "385.49",
+      "amount": "5396.86"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "33",
+      "unit_price": "316.77",
+      "amount": "10453.41"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "38",
+      "unit_price": "428.78",
+      "amount": "16293.64"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "17",
+      "unit_price": "714.99",
+      "amount": "12154.83"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "27",
+      "unit_price": "173.30",
+      "amount": "4679.10"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "4",
+      "unit_price": "465.21",
+      "amount": "1860.84"
+    }
+  ]
+}

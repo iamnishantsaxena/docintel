@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 672 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (Blue Harbor Logistics GmbH) Tj T* (123 Commerce Way, Springfield) Tj T* (INVOICE) Tj T* (Invoice No: BL-9094) Tj T* (Invoice Date: 2025-04-29) Tj T* (Due Date: 2025-05-14) Tj T* (PO Number: PO-9492) Tj T* (Bill To: Umbrella Retail) Tj T* () Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Printer Paper A4 \(box\)   13   $364.46   $4,737.98) Tj T* (Cable Kit   3   $129.61   $388.83) Tj T* (LED Desk Lamp   33   $594.17   $19,607.61) Tj T* (Standing Desk   36   $38.02   $1,368.72) Tj T* (Steel Bracket M8   5   $582.47   $2,912.35) Tj T* () Tj T* (Subtotal: $29,015.49) Tj T* (Tax \(8%\): $2,321.24) Tj T* (Total: $31,336.73) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1084
+%%EOF

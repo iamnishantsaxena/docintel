@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 551 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (ACME Supplies Ltd) Tj T* (INVOICE) Tj T* (Invoice No: BL-29533) Tj T* (Invoice Date: 02/10/2024) Tj T* (Due Date: 17/10/2024) Tj T* (Bill To: Wayne Hospitality Group) Tj T* () Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Label Roll 100mm   36   £262.66   £9,455.76) Tj T* (Toner Cartridge   20   £114.03   £2,280.60) Tj T* (LED Desk Lamp   31   £24.44   £757.64) Tj T* (LED Desk Lamp   19   £603.08   £11,458.52) Tj T* () Tj T* (Subtotal: £23,952.52) Tj T* (Tax \(0%\): £0.00) Tj T* (Total: £23,952.52) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+963
+%%EOF

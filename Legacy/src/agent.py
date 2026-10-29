@@ -18,6 +18,8 @@ from .schema import (
 )
 from .prompts import get_extraction_prompt
 from .pdf_processor import PDFProcessor
+from .docx_processor import DocxProcessor
+from .excel_processor import ExcelProcessor
 from .config import config
 
 logging.basicConfig(level=logging.INFO)
@@ -57,10 +59,18 @@ class OrderExtractionPipeline:
             temperature=temperature,
         )
 
-        # Initialize PDF processor
+        # Initialize document processors
         self.pdf_processor = PDFProcessor(
             chunk_size=config.PDF_CHUNK_SIZE,
             chunk_overlap=config.PDF_CHUNK_OVERLAP
+        )
+        self.docx_processor = DocxProcessor(
+            chunk_size=config.DOCX_CHUNK_SIZE,
+            chunk_overlap=config.DOCX_CHUNK_OVERLAP
+        )
+        self.excel_processor = ExcelProcessor(
+            chunk_size=config.EXCEL_CHUNK_SIZE,
+            chunk_overlap=config.EXCEL_CHUNK_OVERLAP
         )
 
         # Pipeline state
@@ -385,57 +395,132 @@ class OrderExtractionPipeline:
         Returns:
             Extraction result
         """
-        result = None
-        pdf_info = None
-
-        for event in self.process_pdf_streaming(pdf_file):
-            if "pdf_info" in event:
-                pdf_info = event["pdf_info"]
-            if event["status"] == "complete":
-                result = event["result"]
-            elif event["status"] == "error":
-                result = self._create_error_result(event["error"])
-
-        if pdf_info:
-            result["extraction_metadata"]["pdf_info"] = pdf_info
-
-        return result
+        return self._last_document_result(self.process_pdf_streaming(pdf_file), "pdf_info")
 
     def process_pdf_streaming(self, pdf_file) -> Iterator[Dict[str, Any]]:
         """
         Process PDF and extract order, yielding progress updates as extraction proceeds
         (same event shape as extract_order_streaming, plus per-chunk progress for long PDFs)
         """
-        yield {"status": "starting", "message": "Initializing extraction"}
         logger.info("Processing PDF file")
-
+        yield {"status": "starting", "message": "Initializing extraction"}
         yield {"status": "extracting", "message": "Processing PDF"}
-        pdf_result = self.pdf_processor.process_pdf(pdf_file)
+        doc_result = self.pdf_processor.process_pdf(pdf_file)
 
-        if not pdf_result["success"]:
-            error = f"PDF processing failed: {pdf_result.get('error')}"
+        if not doc_result["success"]:
+            error = f"PDF processing failed: {doc_result.get('error')}"
             logger.error(error)
             yield {"status": "error", "error": error}
             return
 
-        text = pdf_result["text"]
+        info = {
+            "num_pages": doc_result["metadata"].get("num_pages"),
+            "num_chunks": doc_result["num_chunks"],
+            "num_tables": len(doc_result["tables"])
+        }
+        yield from self._process_document_streaming(
+            doc_result, self.pdf_processor, info, info_key="pdf_info", source_type="pdf", log_label="PDF"
+        )
+
+    def process_docx(self, docx_file) -> Dict[str, Any]:
+        """
+        Process a Word (.docx) document and extract order
+
+        Args:
+            docx_file: DOCX file path or file-like object
+
+        Returns:
+            Extraction result
+        """
+        return self._last_document_result(self.process_docx_streaming(docx_file), "docx_info")
+
+    def process_docx_streaming(self, docx_file) -> Iterator[Dict[str, Any]]:
+        """
+        Process a DOCX document and extract order, yielding progress updates
+        (same event shape as process_pdf_streaming)
+        """
+        logger.info("Processing DOCX file")
+        yield {"status": "starting", "message": "Initializing extraction"}
+        yield {"status": "extracting", "message": "Processing document"}
+        doc_result = self.docx_processor.process_docx(docx_file)
+
+        if not doc_result["success"]:
+            error = f"DOCX processing failed: {doc_result.get('error')}"
+            logger.error(error)
+            yield {"status": "error", "error": error}
+            return
+
+        info = {
+            "num_paragraphs": doc_result["metadata"].get("num_paragraphs"),
+            "num_chunks": doc_result["num_chunks"],
+            "num_tables": len(doc_result["tables"])
+        }
+        yield from self._process_document_streaming(
+            doc_result, self.docx_processor, info, info_key="docx_info", source_type="docx", log_label="DOCX"
+        )
+
+    def process_excel(self, excel_file) -> Dict[str, Any]:
+        """
+        Process an Excel (.xlsx) workbook and extract order
+
+        Args:
+            excel_file: XLSX file path or file-like object
+
+        Returns:
+            Extraction result
+        """
+        return self._last_document_result(self.process_excel_streaming(excel_file), "excel_info")
+
+    def process_excel_streaming(self, excel_file) -> Iterator[Dict[str, Any]]:
+        """
+        Process an Excel workbook and extract order, yielding progress updates
+        (same event shape as process_pdf_streaming)
+        """
+        logger.info("Processing Excel file")
+        yield {"status": "starting", "message": "Initializing extraction"}
+        yield {"status": "extracting", "message": "Processing spreadsheet"}
+        doc_result = self.excel_processor.process_excel(excel_file)
+
+        if not doc_result["success"]:
+            error = f"Excel processing failed: {doc_result.get('error')}"
+            logger.error(error)
+            yield {"status": "error", "error": error}
+            return
+
+        info = {
+            "num_rows": doc_result["metadata"].get("num_rows"),
+            "num_chunks": doc_result["num_chunks"],
+            "num_tables": len(doc_result["tables"])
+        }
+        yield from self._process_document_streaming(
+            doc_result, self.excel_processor, info, info_key="excel_info", source_type="excel", log_label="Excel"
+        )
+
+    def _process_document_streaming(
+        self,
+        doc_result: Dict[str, Any],
+        processor,
+        info: Dict[str, Any],
+        info_key: str,
+        source_type: str,
+        log_label: str
+    ) -> Iterator[Dict[str, Any]]:
+        """
+        Shared tail of process_pdf_streaming/process_docx_streaming once raw text/chunks/tables
+        have been extracted: chunked (or single-shot) LLM extraction, then steps 2-6.
+        """
+        text = doc_result["text"]
         table_text = ""
 
-        if pdf_result["tables"]:
-            table_text = self.pdf_processor.format_tables_as_text(pdf_result["tables"])
+        if doc_result["tables"]:
+            table_text = processor.format_tables_as_text(doc_result["tables"])
             text = f"{text}\n\n{table_text}"
-
-        pdf_info = {
-            "num_pages": pdf_result["metadata"].get("num_pages"),
-            "num_chunks": pdf_result["num_chunks"],
-            "num_tables": len(pdf_result["tables"])
-        }
 
         self.extraction_steps = []
         try:
-            chunks = pdf_result["chunks"]
+            chunks = doc_result["chunks"]
             if len(chunks) > 1:
-                logger.info(f"PDF split into {len(chunks)} chunks for extraction")
+                logger.info(f"{log_label} split into {len(chunks)} chunks for extraction")
                 if table_text:
                     # keep tables visible to the LLM by folding them into the last chunk
                     chunks = chunks[:-1] + [{**chunks[-1], "text": chunks[-1]["text"] + "\n\n" + table_text}]
@@ -450,13 +535,31 @@ class OrderExtractionPipeline:
                 self._log_step("Analyzing input and extracting fields")
                 extracted_data = self._extract_with_llm(text)
 
-            yield {"status": "progress", "data": extracted_data, "step": 1, "total_steps": 5, "pdf_info": pdf_info}
+            yield {"status": "progress", "data": extracted_data, "step": 1, "total_steps": 5, info_key: info}
         except Exception as e:
-            logger.error(f"Error during PDF extraction: {e}")
-            yield {"status": "error", "error": str(e), "pdf_info": pdf_info}
+            logger.error(f"Error during {log_label} extraction: {e}")
+            yield {"status": "error", "error": str(e), info_key: info}
             return
 
-        for event in self._run_pipeline_streaming(extracted_data, text, source_type="pdf"):
-            if "pdf_info" not in event:
-                event["pdf_info"] = pdf_info
+        for event in self._run_pipeline_streaming(extracted_data, text, source_type=source_type):
+            if info_key not in event:
+                event[info_key] = info
             yield event
+
+    def _last_document_result(self, stream: Iterator[Dict[str, Any]], info_key: str) -> Dict[str, Any]:
+        """Collect a process_*_streaming generator into a single result, folding in doc info"""
+        result = None
+        info = None
+
+        for event in stream:
+            if info_key in event:
+                info = event[info_key]
+            if event["status"] == "complete":
+                result = event["result"]
+            elif event["status"] == "error":
+                result = self._create_error_result(event["error"])
+
+        if info:
+            result["extraction_metadata"][info_key] = info
+
+        return result

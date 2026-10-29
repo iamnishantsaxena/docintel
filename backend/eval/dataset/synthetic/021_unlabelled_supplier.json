@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "ACME SUPPLIES LTD",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "INV-77753",
+  "po_number": null,
+  "document_date": "2024-11-07",
+  "due_date": "2024-12-07",
+  "currency": "USD",
+  "subtotal": "68121.36",
+  "tax": "3406.07",
+  "total": "71527.43",
+  "line_items": [
+    {
+      "description": "Cable Kit",
+      "quantity": "32",
+      "unit_price": "197.40",
+      "amount": "6316.80"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "19",
+      "unit_price": "812.45",
+      "amount": "15436.55"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "10",
+      "unit_price": "58.89",
+      "amount": "588.90"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "33",
+      "unit_price": "823.75",
+      "amount": "27183.75"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "28",
+      "unit_price": "664.12",
+      "amount": "18595.36"
+    }
+  ]
+}

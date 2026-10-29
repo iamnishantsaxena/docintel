@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 583 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (TAX INVOICE) Tj T* (Vendor: Kestrel Industrial Parts) Tj T* (Invoice # IN-4255) Tj T* (Date: May 24, 2025) Tj T* (Payment due: July 23, 2025) Tj T* (Customer: Umbrella Retail) Tj T* (Your ref \(PO\): PO-9055) Tj T* () Tj T* (Item   Qty   Price   Line Total) Tj T* (Standing Desk   23   €494.46   €11,372.58) Tj T* (Label Roll 100mm   21   €159.97   €3,359.37) Tj T* (Cable Kit   22   €3.78   €83.16) Tj T* (Monitor Arm   21   €444.88   €9,342.48) Tj T* () Tj T* (Net amount: €24,157.59) Tj T* (VAT 20%: €4,831.52) Tj T* (Amount Due: €28,989.11) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+995
+%%EOF

@@ -1,0 +1,111 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "ACME Supplies Ltd",
+  "customer_name": "Hooli Labs",
+  "document_number": "INV-6486",
+  "po_number": null,
+  "document_date": "2024-08-23",
+  "due_date": "2024-09-07",
+  "currency": "EUR",
+  "subtotal": "129906.14",
+  "tax": "0.00",
+  "total": "129906.14",
+  "line_items": [
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "5",
+      "unit_price": "660.75",
+      "amount": "3303.75"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "35",
+      "unit_price": "122.01",
+      "amount": "4270.35"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "34",
+      "unit_price": "88.07",
+      "amount": "2994.38"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "31",
+      "unit_price": "332.05",
+      "amount": "10293.55"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "5",
+      "unit_price": "349.57",
+      "amount": "1747.85"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "16",
+      "unit_price": "270.48",
+      "amount": "4327.68"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "15",
+      "unit_price": "853.37",
+      "amount": "12800.55"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "30",
+      "unit_price": "648.92",
+      "amount": "19467.60"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "25",
+      "unit_price": "102.08",
+      "amount": "2552.00"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "31",
+      "unit_price": "897.63",
+      "amount": "27826.53"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "19",
+      "unit_price": "62.77",
+      "amount": "1192.63"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "13",
+      "unit_price": "103.04",
+      "amount": "1339.52"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "39",
+      "unit_price": "194.73",
+      "amount": "7594.47"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "22",
+      "unit_price": "334.34",
+      "amount": "7355.48"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "20",
+      "unit_price": "815.65",
+      "amount": "16313.00"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "37",
+      "unit_price": "176.40",
+      "amount": "6526.80"
+    }
+  ]
+}

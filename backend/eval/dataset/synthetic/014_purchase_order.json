@@ -1,0 +1,33 @@
+{
+  "document_type": "purchase_order",
+  "supplier_name": "Initech Office Solutions",
+  "customer_name": "Wayne Hospitality Group",
+  "document_number": "PO-3530",
+  "po_number": "PO-3530",
+  "document_date": "2024-03-15",
+  "due_date": null,
+  "currency": "EUR",
+  "subtotal": "28162.45",
+  "tax": "1408.12",
+  "total": "29570.57",
+  "line_items": [
+    {
+      "description": "Cable Kit",
+      "quantity": "15",
+      "unit_price": "124.87",
+      "amount": "1873.05"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "26",
+      "unit_price": "640.16",
+      "amount": "16644.16"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "11",
+      "unit_price": "876.84",
+      "amount": "9645.24"
+    }
+  ]
+}

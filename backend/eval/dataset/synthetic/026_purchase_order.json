@@ -1,0 +1,33 @@
+{
+  "document_type": "purchase_order",
+  "supplier_name": "Initech Office Solutions",
+  "customer_name": "Globex Corp",
+  "document_number": "PO-2251",
+  "po_number": "PO-2251",
+  "document_date": "2024-10-23",
+  "due_date": null,
+  "currency": "USD",
+  "subtotal": "21744.47",
+  "tax": "1087.22",
+  "total": "22831.69",
+  "line_items": [
+    {
+      "description": "Monitor Arm",
+      "quantity": "18",
+      "unit_price": "134.81",
+      "amount": "2426.58"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "4",
+      "unit_price": "869.16",
+      "amount": "3476.64"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "19",
+      "unit_price": "833.75",
+      "amount": "15841.25"
+    }
+  ]
+}

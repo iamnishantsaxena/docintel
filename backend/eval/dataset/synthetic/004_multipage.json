@@ -1,0 +1,123 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Kestrel Industrial Parts",
+  "customer_name": "Hooli Labs",
+  "document_number": "INV-13267",
+  "po_number": null,
+  "document_date": "2025-05-23",
+  "due_date": "2025-07-22",
+  "currency": "USD",
+  "subtotal": "148261.62",
+  "tax": "11860.93",
+  "total": "160122.55",
+  "line_items": [
+    {
+      "description": "Cable Kit",
+      "quantity": "19",
+      "unit_price": "171.02",
+      "amount": "3249.38"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "16",
+      "unit_price": "523.03",
+      "amount": "8368.48"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "26",
+      "unit_price": "652.28",
+      "amount": "16959.28"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "6",
+      "unit_price": "219.55",
+      "amount": "1317.30"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "29",
+      "unit_price": "527.94",
+      "amount": "15310.26"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "36",
+      "unit_price": "365.66",
+      "amount": "13163.76"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "9",
+      "unit_price": "565.79",
+      "amount": "5092.11"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "36",
+      "unit_price": "366.43",
+      "amount": "13191.48"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "27",
+      "unit_price": "471.74",
+      "amount": "12736.98"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "25",
+      "unit_price": "303.95",
+      "amount": "7598.75"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "10",
+      "unit_price": "110.26",
+      "amount": "1102.60"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "12",
+      "unit_price": "199.80",
+      "amount": "2397.60"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "15",
+      "unit_price": "864.63",
+      "amount": "12969.45"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "15",
+      "unit_price": "17.31",
+      "amount": "259.65"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "32",
+      "unit_price": "773.67",
+      "amount": "24757.44"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "12",
+      "unit_price": "345.88",
+      "amount": "4150.56"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "19",
+      "unit_price": "6.86",
+      "amount": "130.34"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "10",
+      "unit_price": "550.62",
+      "amount": "5506.20"
+    }
+  ]
+}

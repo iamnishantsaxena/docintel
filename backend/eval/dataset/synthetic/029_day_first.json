@@ -1,0 +1,27 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Orbital Print & Design",
+  "customer_name": "Wayne Hospitality Group",
+  "document_number": "IN-3858",
+  "po_number": null,
+  "document_date": "2025-04-01",
+  "due_date": "2025-05-31",
+  "currency": "GBP",
+  "subtotal": "23960.08",
+  "tax": "0.00",
+  "total": "23960.08",
+  "line_items": [
+    {
+      "description": "Standing Desk",
+      "quantity": "31",
+      "unit_price": "771.12",
+      "amount": "23904.72"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "32",
+      "unit_price": "1.73",
+      "amount": "55.36"
+    }
+  ]
+}

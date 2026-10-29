@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 531 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (TAX INVOICE) Tj T* (Vendor: Initech Office Solutions) Tj T* (Invoice # BL-33460) Tj T* (Date: April 08, 2025) Tj T* (Payment due: June 07, 2025) Tj T* (Customer: Stark Manufacturing) Tj T* () Tj T* (Item   Qty   Price   Line Total) Tj T* (Printer Paper A4 \(box\)   9   €547.59   €4,928.31) Tj T* (Printer Paper A4 \(box\)   8   €515.77   €4,126.16) Tj T* (LED Desk Lamp   29   €415.66   €12,054.14) Tj T* () Tj T* (Net amount: €21,108.61) Tj T* (VAT 0%: €0.00) Tj T* (Amount Due: €21,108.61) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+943
+%%EOF

@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "ORBITAL PRINT & DESIGN",
+  "customer_name": "Hooli Labs",
+  "document_number": "IN-26656",
+  "po_number": null,
+  "document_date": "2025-02-17",
+  "due_date": "2025-04-03",
+  "currency": "USD",
+  "subtotal": "23316.26",
+  "tax": "4663.25",
+  "total": "27979.51",
+  "line_items": [
+    {
+      "description": "Safety Gloves L",
+      "quantity": "2",
+      "unit_price": "444.49",
+      "amount": "888.98"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "36",
+      "unit_price": "602.68",
+      "amount": "21696.48"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "29",
+      "unit_price": "25.20",
+      "amount": "730.80"
+    }
+  ]
+}

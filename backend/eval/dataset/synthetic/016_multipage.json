@@ -1,0 +1,105 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Sunrise Packaging Co.",
+  "customer_name": "Hooli Labs",
+  "document_number": "INV-14733",
+  "po_number": null,
+  "document_date": "2024-03-06",
+  "due_date": "2024-03-21",
+  "currency": "USD",
+  "subtotal": "63844.86",
+  "tax": "5107.59",
+  "total": "68952.45",
+  "line_items": [
+    {
+      "description": "Shipping Pallet",
+      "quantity": "21",
+      "unit_price": "118.75",
+      "amount": "2493.75"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "18",
+      "unit_price": "76.90",
+      "amount": "1384.20"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "12",
+      "unit_price": "558.97",
+      "amount": "6707.64"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "5",
+      "unit_price": "353.98",
+      "amount": "1769.90"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "2",
+      "unit_price": "833.07",
+      "amount": "1666.14"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "6",
+      "unit_price": "343.01",
+      "amount": "2058.06"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "6",
+      "unit_price": "798.65",
+      "amount": "4791.90"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "15",
+      "unit_price": "88.82",
+      "amount": "1332.30"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "17",
+      "unit_price": "160.98",
+      "amount": "2736.66"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "30",
+      "unit_price": "16.63",
+      "amount": "498.90"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "22",
+      "unit_price": "726.41",
+      "amount": "15981.02"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "27",
+      "unit_price": "352.58",
+      "amount": "9519.66"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "9",
+      "unit_price": "58.13",
+      "amount": "523.17"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "34",
+      "unit_price": "314.02",
+      "amount": "10676.68"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "8",
+      "unit_price": "213.11",
+      "amount": "1704.88"
+    }
+  ]
+}

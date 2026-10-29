@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "SUNRISE PACKAGING CO.",
+  "customer_name": "Umbrella Retail",
+  "document_number": "BL-46812",
+  "po_number": null,
+  "document_date": "2024-12-18",
+  "due_date": "2025-02-16",
+  "currency": "USD",
+  "subtotal": "23916.49",
+  "tax": "0.00",
+  "total": "23916.49",
+  "line_items": [
+    {
+      "description": "Monitor Arm",
+      "quantity": "15",
+      "unit_price": "617.64",
+      "amount": "9264.60"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "13",
+      "unit_price": "444.17",
+      "amount": "5774.21"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "14",
+      "unit_price": "634.12",
+      "amount": "8877.68"
+    }
+  ]
+}

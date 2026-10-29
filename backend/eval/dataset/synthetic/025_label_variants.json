@@ -1,0 +1,39 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Kestrel Industrial Parts",
+  "customer_name": "Umbrella Retail",
+  "document_number": "IN-4255",
+  "po_number": "PO-9055",
+  "document_date": "2025-05-24",
+  "due_date": "2025-07-23",
+  "currency": "EUR",
+  "subtotal": "24157.59",
+  "tax": "4831.52",
+  "total": "28989.11",
+  "line_items": [
+    {
+      "description": "Standing Desk",
+      "quantity": "23",
+      "unit_price": "494.46",
+      "amount": "11372.58"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "21",
+      "unit_price": "159.97",
+      "amount": "3359.37"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "22",
+      "unit_price": "3.78",
+      "amount": "83.16"
+    },
+    {
+      "description": "Monitor Arm",
+      "quantity": "21",
+      "unit_price": "444.88",
+      "amount": "9342.48"
+    }
+  ]
+}

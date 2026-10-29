@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Blue Harbor Logistics GmbH",
+  "customer_name": "Umbrella Retail",
+  "document_number": "BL-9094",
+  "po_number": "PO-9492",
+  "document_date": "2025-04-29",
+  "due_date": "2025-05-14",
+  "currency": "USD",
+  "subtotal": "29015.49",
+  "tax": "2321.24",
+  "total": "31336.73",
+  "line_items": [
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "13",
+      "unit_price": "364.46",
+      "amount": "4737.98"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "3",
+      "unit_price": "129.61",
+      "amount": "388.83"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "33",
+      "unit_price": "594.17",
+      "amount": "19607.61"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "36",
+      "unit_price": "38.02",
+      "amount": "1368.72"
+    },
+    {
+      "description": "Steel Bracket M8",
+      "quantity": "5",
+      "unit_price": "582.47",
+      "amount": "2912.35"
+    }
+  ]
+}

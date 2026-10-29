@@ -16,6 +16,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from src.agent import OrderExtractionPipeline
 from src.pdf_processor import PDFValidator
+from src.docx_processor import DocxValidator
+from src.excel_processor import ExcelValidator
 from src.database import OrderDatabase
 from src.config import config
 
@@ -318,7 +320,7 @@ def main():
     
     # Header
     st.markdown('<div class="main-header">📦 Order Extraction Agent</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-header">AI-powered order extraction from text, emails, and PDFs</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-header">AI-powered order extraction from text, emails, and PDF/DOCX documents</div>', unsafe_allow_html=True)
     
     # Sidebar
     with st.sidebar:
@@ -357,7 +359,7 @@ def main():
         st.info("""
         **How to use:**
         1. Initialize the agent
-        2. Upload a PDF or paste text
+        2. Upload a PDF/DOCX or paste text
         3. Click "Generate Order JSON"
         4. Review the results
         """)
@@ -377,34 +379,44 @@ def main():
     # Input method selection
     input_method = st.radio(
         "Select Input Method",
-        ["📄 Upload PDF", "📝 Paste Text/Email"],
+        ["📄 Upload PDF/DOCX/Excel", "📝 Paste Text/Email"],
         horizontal=True
     )
-    
+
     input_text = None
-    pdf_file = None
-    
-    if input_method == "📄 Upload PDF":
-        pdf_file = st.file_uploader(
-            "Upload PDF Document",
-            type=["pdf"],
-            help="Upload a PDF containing order information"
+    uploaded = {}  # extension -> file, e.g. {"pdf": doc_file}
+
+    # extension -> (label, validator, is_valid_fn)
+    DOC_TYPES = {
+        "pdf": ("PDF", PDFValidator, PDFValidator.is_valid_pdf),
+        "docx": ("DOCX", DocxValidator, DocxValidator.is_valid_docx),
+        "xlsx": ("Excel", ExcelValidator, ExcelValidator.is_valid_excel),
+    }
+
+    if input_method == "📄 Upload PDF/DOCX/Excel":
+        doc_file = st.file_uploader(
+            "Upload Document",
+            type=list(DOC_TYPES.keys()),
+            help="Upload a PDF, Word, or Excel document containing order information"
         )
-        
-        if pdf_file:
-            # Validate PDF
-            is_valid, error = PDFValidator.is_valid_pdf(pdf_file)
+
+        if doc_file:
+            ext = doc_file.name.lower().rsplit(".", 1)[-1]
+            label, validator, is_valid_fn = DOC_TYPES[ext]
+
+            is_valid, error = is_valid_fn(doc_file)
             if not is_valid:
-                st.error(f"Invalid PDF: {error}")
+                st.error(f"Invalid {label}: {error}")
                 st.stop()
-            
-            is_valid, error = PDFValidator.check_file_size(pdf_file, max_size_mb=10.0)
+
+            is_valid, error = validator.check_file_size(doc_file, max_size_mb=10.0)
             if not is_valid:
                 st.error(f"File too large: {error}")
                 st.stop()
-            
-            st.success(f"✅ PDF uploaded: {pdf_file.name}")
-    
+
+            uploaded[ext] = doc_file
+            st.success(f"✅ {label} uploaded: {doc_file.name}")
+
     else:
         input_text = st.text_area(
             "Paste your text or email content",
@@ -436,8 +448,8 @@ Payment: Net 30
     
     # Process extraction
     if extract_button:
-        if not pdf_file and not input_text:
-            st.error("Please provide input (PDF or text)")
+        if not uploaded and not input_text:
+            st.error("Please provide input (PDF, DOCX, Excel, or text)")
             st.stop()
         
         st.session_state.processing = True
@@ -454,11 +466,17 @@ Payment: Net 30
             try:
                 status_text.text("🤖 Extracting information...")
 
-                # Both branches now yield identically-shaped progress events, so a
-                # long PDF (split into multiple chunks) shows real progress instead
-                # of a fake jump to 100%.
-                if pdf_file:
-                    stream = st.session_state.agent.process_pdf_streaming(pdf_file)
+                # All branches now yield identically-shaped progress events, so a
+                # long document (split into multiple chunks) shows real progress
+                # instead of a fake jump to 100%.
+                STREAM_METHODS = {
+                    "pdf": st.session_state.agent.process_pdf_streaming,
+                    "docx": st.session_state.agent.process_docx_streaming,
+                    "xlsx": st.session_state.agent.process_excel_streaming,
+                }
+                if uploaded:
+                    ext, doc_file = next(iter(uploaded.items()))
+                    stream = STREAM_METHODS[ext](doc_file)
                 else:
                     stream = st.session_state.agent.extract_order_streaming(input_text)
 

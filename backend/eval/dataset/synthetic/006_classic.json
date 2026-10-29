@@ -1,0 +1,45 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Blue Harbor Logistics GmbH",
+  "customer_name": "Hooli Labs",
+  "document_number": "BL-4342",
+  "po_number": "PO-4407",
+  "document_date": "2024-04-13",
+  "due_date": "2024-05-28",
+  "currency": "EUR",
+  "subtotal": "60493.71",
+  "tax": "0.00",
+  "total": "60493.71",
+  "line_items": [
+    {
+      "description": "Standing Desk",
+      "quantity": "39",
+      "unit_price": "478.81",
+      "amount": "18673.59"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "31",
+      "unit_price": "162.51",
+      "amount": "5037.81"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "8",
+      "unit_price": "641.22",
+      "amount": "5129.76"
+    },
+    {
+      "description": "Shipping Pallet",
+      "quantity": "30",
+      "unit_price": "631.16",
+      "amount": "18934.80"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "31",
+      "unit_price": "410.25",
+      "amount": "12717.75"
+    }
+  ]
+}

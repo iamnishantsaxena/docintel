@@ -1,0 +1,39 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "ACME Supplies Ltd",
+  "customer_name": "Wayne Hospitality Group",
+  "document_number": "BL-29533",
+  "po_number": null,
+  "document_date": "2024-10-02",
+  "due_date": "2024-10-17",
+  "currency": "GBP",
+  "subtotal": "23952.52",
+  "tax": "0.00",
+  "total": "23952.52",
+  "line_items": [
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "36",
+      "unit_price": "262.66",
+      "amount": "9455.76"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "20",
+      "unit_price": "114.03",
+      "amount": "2280.60"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "31",
+      "unit_price": "24.44",
+      "amount": "757.64"
+    },
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "19",
+      "unit_price": "603.08",
+      "amount": "11458.52"
+    }
+  ]
+}

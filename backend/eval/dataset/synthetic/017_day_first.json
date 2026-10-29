@@ -1,0 +1,33 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Blue Harbor Logistics GmbH",
+  "customer_name": "Umbrella Retail",
+  "document_number": "BL-27983",
+  "po_number": null,
+  "document_date": "2024-11-15",
+  "due_date": "2024-12-30",
+  "currency": "GBP",
+  "subtotal": "5703.55",
+  "tax": "0.00",
+  "total": "5703.55",
+  "line_items": [
+    {
+      "description": "LED Desk Lamp",
+      "quantity": "12",
+      "unit_price": "356.07",
+      "amount": "4272.84"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "23",
+      "unit_price": "25.30",
+      "amount": "581.90"
+    },
+    {
+      "description": "Safety Gloves L",
+      "quantity": "17",
+      "unit_price": "49.93",
+      "amount": "848.81"
+    }
+  ]
+}

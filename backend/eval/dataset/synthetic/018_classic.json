@@ -1,0 +1,39 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Initech Office Solutions",
+  "customer_name": "Hooli Labs",
+  "document_number": "IN-14930",
+  "po_number": null,
+  "document_date": "2025-05-01",
+  "due_date": "2025-05-31",
+  "currency": "USD",
+  "subtotal": "28143.43",
+  "tax": "2251.47",
+  "total": "30394.90",
+  "line_items": [
+    {
+      "description": "Safety Gloves L",
+      "quantity": "33",
+      "unit_price": "404.91",
+      "amount": "13362.03"
+    },
+    {
+      "description": "Cable Kit",
+      "quantity": "14",
+      "unit_price": "302.39",
+      "amount": "4233.46"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "22",
+      "unit_price": "261.84",
+      "amount": "5760.48"
+    },
+    {
+      "description": "Standing Desk",
+      "quantity": "9",
+      "unit_price": "531.94",
+      "amount": "4787.46"
+    }
+  ]
+}

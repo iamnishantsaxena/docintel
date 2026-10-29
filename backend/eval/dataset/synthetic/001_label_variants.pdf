@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 654 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (TAX INVOICE) Tj T* (Vendor: Initech Office Solutions) Tj T* (Invoice # IN-55937) Tj T* (Date: July 24, 2025) Tj T* (Payment due: August 23, 2025) Tj T* (Customer: Globex Corp) Tj T* (Your ref \(PO\): PO-2929) Tj T* () Tj T* (Item   Qty   Price   Line Total) Tj T* (Label Roll 100mm   38   €750.18   €28,506.84) Tj T* (Printer Paper A4 \(box\)   13   €489.60   €6,364.80) Tj T* (Safety Gloves L   7   €719.43   €5,036.01) Tj T* (Toner Cartridge   5   €741.22   €3,706.10) Tj T* (LED Desk Lamp   4   €812.84   €3,251.36) Tj T* () Tj T* (Net amount: €46,865.11) Tj T* (VAT 5%: €2,343.26) Tj T* (Amount Due: €49,208.37) Tj T* ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000361 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1066
+%%EOF

@@ -1,0 +1,43 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 626 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (Sunrise Packaging Co.) Tj T* (INVOICE) Tj T* (Invoice No: INV-14733) Tj T* (Invoice Date: 2024-03-06) Tj T* (Due Date: 2024-03-21) Tj T* (Bill To: Hooli Labs) Tj T* () Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Shipping Pallet   21   $118.75   $2,493.75) Tj T* (Safety Gloves L   18   $76.90   $1,384.20) Tj T* (Standing Desk   12   $558.97   $6,707.64) Tj T* (Toner Cartridge   5   $353.98   $1,769.90) Tj T* (Label Roll 100mm   2   $833.07   $1,666.14) Tj T* (Cable Kit   6   $343.01   $2,058.06) Tj T* (Monitor Arm   6   $798.65   $4,791.90) Tj T* (continued on next page) Tj T* ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /CropBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 619 >>
+stream
+BT /F1 10 Tf 14 TL 50 800 Td (Invoice INV-14733 - page 2) Tj T* (Description   Qty   Unit Price   Amount) Tj T* (Cable Kit   15   $88.82   $1,332.30) Tj T* (Safety Gloves L   17   $160.98   $2,736.66) Tj T* (Toner Cartridge   30   $16.63   $498.90) Tj T* (Printer Paper A4 \(box\)   22   $726.41   $15,981.02) Tj T* (Monitor Arm   27   $352.58   $9,519.66) Tj T* (Printer Paper A4 \(box\)   9   $58.13   $523.17) Tj T* (Label Roll 100mm   34   $314.02   $10,676.68) Tj T* (Steel Bracket M8   8   $213.11   $1,704.88) Tj T* () Tj T* (Subtotal: $63,844.86) Tj T* (Tax \(8%\): $5,107.59) Tj T* (Total: $68,952.45) Tj T* ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000367 00000 n 
+0000001044 00000 n 
+0000001193 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+1863
+%%EOF

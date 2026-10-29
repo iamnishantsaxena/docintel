@@ -1,0 +1,39 @@
+{
+  "document_type": "purchase_order",
+  "supplier_name": "ACME Supplies Ltd",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "PO-2374",
+  "po_number": "PO-2374",
+  "document_date": "2024-08-11",
+  "due_date": null,
+  "currency": "USD",
+  "subtotal": "18006.32",
+  "tax": "0.00",
+  "total": "18006.32",
+  "line_items": [
+    {
+      "description": "Shipping Pallet",
+      "quantity": "16",
+      "unit_price": "663.06",
+      "amount": "10608.96"
+    },
+    {
+      "description": "Toner Cartridge",
+      "quantity": "1",
+      "unit_price": "120.58",
+      "amount": "120.58"
+    },
+    {
+      "description": "Label Roll 100mm",
+      "quantity": "17",
+      "unit_price": "119.14",
+      "amount": "2025.38"
+    },
+    {
+      "description": "Printer Paper A4 (box)",
+      "quantity": "10",
+      "unit_price": "525.14",
+      "amount": "5251.40"
+    }
+  ]
+}

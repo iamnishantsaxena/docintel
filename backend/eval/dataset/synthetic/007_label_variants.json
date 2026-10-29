@@ -1,0 +1,27 @@
+{
+  "document_type": "invoice",
+  "supplier_name": "Northwind Traders",
+  "customer_name": "Stark Manufacturing",
+  "document_number": "BL-22160",
+  "po_number": null,
+  "document_date": "2024-09-28",
+  "due_date": "2024-11-27",
+  "currency": "EUR",
+  "subtotal": "8521.80",
+  "tax": "681.74",
+  "total": "9203.54",
+  "line_items": [
+    {
+      "description": "Toner Cartridge",
+      "quantity": "10",
+      "unit_price": "713.44",
+      "amount": "7134.40"
+    },
+    {
+      "description": "Ergonomic Office Chair",
+      "quantity": "2",
+      "unit_price": "693.70",
+      "amount": "1387.40"
+    }
+  ]
+}

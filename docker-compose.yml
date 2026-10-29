@@ -1,0 +1,64 @@
+# docker compose up --build   ->  http://localhost:8080
+# The LLM is NOT in this file: by default the containers call Ollama running on the host
+# (Docker on macOS has no GPU access). Point LLM_BASE_URL/LLM_MODEL/LLM_API_KEY at any
+# OpenAI-compatible endpoint instead, or set LLM_ENABLED=false for regex-only mode.
+
+x-backend: &backend
+  build: ./backend
+  environment:
+    DATABASE_URL: postgresql+psycopg://docintel:docintel@db:5432/docintel
+    REDIS_URL: redis://redis:6379/0
+    JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET, e.g. export JWT_SECRET=$$(openssl rand -hex 32)}
+    LLM_BASE_URL: ${LLM_BASE_URL:-http://host.docker.internal:11434/v1}
+    LLM_MODEL: ${LLM_MODEL:-qwen2.5:1.5b}
+    LLM_API_KEY: ${LLM_API_KEY:-ollama}
+    LLM_ENABLED: ${LLM_ENABLED:-true}
+  volumes:
+    - uploads:/data/uploads
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  depends_on:
+    db: { condition: service_healthy }
+    redis: { condition: service_healthy }
+  restart: unless-stopped
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: docintel
+      POSTGRES_PASSWORD: docintel
+      POSTGRES_DB: docintel
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U docintel"]
+      interval: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      retries: 20
+
+  api:
+    <<: *backend
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 5s
+      retries: 20
+
+  worker:
+    <<: *backend
+    command: ["celery", "-A", "app.worker", "worker", "--loglevel=info", "--concurrency=2"]
+
+  web:
+    build: ./frontend
+    ports: ["8080:80"]
+    depends_on:
+      api: { condition: service_healthy }
+
+volumes:
+  pgdata:
+  uploads:
