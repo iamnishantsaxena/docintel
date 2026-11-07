@@ -62,7 +62,7 @@ def llm(monkeypatch):
             Fake.calls += 1
             if isinstance(self.reply, Exception):
                 raise self.reply
-            return dict(self.reply)
+            return dict(self.reply), "fake-model"
 
     fake = Fake()
     monkeypatch.setattr(extraction, "call_llm", fake)

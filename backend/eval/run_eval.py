@@ -14,7 +14,7 @@ import json
 import platform
 import statistics
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -50,17 +50,19 @@ def main() -> None:
     ap.add_argument("--no-llm", action="store_true")
     args = ap.parse_args()
     use_llm = not args.no_llm
-    mode = f"llm:{settings.llm_model}" if use_llm else "regex-only"
+    mode = f"llm:{'+'.join(m for _, m, _ in settings.llm_endpoints())}" if use_llm else "regex-only"
 
     per_field = defaultdict(list)
     per_template = defaultdict(list)
+    answered_by = Counter()  # which model actually read each doc (cloud vs local fallback)
+    printed, absent = [], []  # checks where the truth has a value / is null (not printed)
     failures, latencies, fallbacks, llm_errors = [], [], [], []
     files = sorted(Path(args.dataset).glob("*.pdf"))
     for pdf in files:
         truth = Fields(**json.loads(pdf.with_suffix(".json").read_text()))
         t0 = time.monotonic()
         try:
-            fields, issues, _ = extract(pdf_to_pages(pdf.read_bytes()), use_llm=use_llm)
+            fields, issues, meta = extract(pdf_to_pages(pdf.read_bytes()), use_llm=use_llm)
             pred = Fields(**fields)
         except PDFError as e:
             failures.append((pdf.name, "PDF", str(e)))
@@ -70,6 +72,7 @@ def main() -> None:
             llm_errors.append(pdf.name)
             continue
         latencies.append(time.monotonic() - t0)
+        answered_by[meta['model'] or 'none (pattern matching)'] += 1
         print(f"{pdf.name}: {latencies[-1]:.1f}s", flush=True)
         if any(i["code"] == "llm_bad_output" for i in issues):
             fallbacks.append(pdf.name)  # at least one chunk scored on regex, not the model
@@ -77,6 +80,7 @@ def main() -> None:
         template = pdf.stem.split("_", 1)[-1]
         for f, ok in s.items():
             per_field[f].append(ok)
+            (absent if f in SCALARS and norm(getattr(truth, f)) is None else printed).append(ok)
             if not ok:
                 failures.append((pdf.name, f, f"got {getattr(pred, f, None)!s} want {getattr(truth, f, None)!s}"
                                  if f in SCALARS else f"got {len(pred.line_items)} items want {len(truth.line_items)}"))
@@ -89,14 +93,17 @@ def main() -> None:
         "",
         f"- Run: {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} on {platform.platform()}",
         f"- Dataset: `{Path(args.dataset).relative_to(HERE.parent) if Path(args.dataset).is_relative_to(HERE.parent) else args.dataset}` ({len(files)} PDFs)",
-        f"- Model: {settings.llm_model if use_llm else 'none'} @ {settings.llm_base_url if use_llm else '-'}",
+        f"- Models tried, in order: {', '.join(f'{m} @ {u}' for u, m, _ in settings.llm_endpoints()) if use_llm else 'none'}",
+        f"- Answered by: {', '.join(f'{m} ({n} docs)' for m, n in answered_by.most_common())}",
         f"- Latency per document: median {statistics.median(latencies):.2f}s, max {max(latencies):.2f}s"
         if latencies else "- Latency: n/a",
         f"- Docs where the model output was unusable for ≥1 chunk (regex fallback): {len(fallbacks)}"
         + (f" ({', '.join(fallbacks)})" if fallbacks else "") if use_llm else "- LLM: not used",
         f"- Docs with no result because the LLM call failed (timeout {settings.llm_timeout_s}s): {len(llm_errors)}"
-        + (f" ({', '.join(llm_errors)})" if llm_errors else "") if use_llm else "",
+        + (f" ({', '.join(llm_errors)})" if llm_errors else "") if use_llm else "- LLM errors: n/a",
         f"- **Overall field accuracy: {pct(all_scores)}** ({sum(all_scores)}/{len(all_scores)} field checks)",
+        f"- Accuracy on printed fields (truth has a value; incl. line items): {pct(printed)} ({sum(printed)}/{len(printed)})",
+        f"- Not-printed fields correctly left empty (1 − invented-value rate): {pct(absent)} ({sum(absent)}/{len(absent)})",
         "",
         "| Field | Accuracy |", "|---|---|",
         *[f"| {f} | {pct(per_field[f])} |" for f in [*SCALARS, "line_items_count", "line_items_exact"]],
@@ -106,7 +113,9 @@ def main() -> None:
         *[f"| {a} | {b} | {c.replace('|', '/')} |" for a, b, c in failures],
     ]
     report = "\n".join(lines) + "\n"
-    out = HERE / "results" / f"{mode.replace(':', '_').replace('/', '_')}.md"
+    name = Path(args.dataset).name
+    suffix = "" if name == "synthetic" else f"_{name}"  # keep reports for different datasets apart
+    out = HERE / "results" / f"{mode.replace(':', '_').replace('/', '_')}{suffix}.md"
     out.parent.mkdir(exist_ok=True)
     out.write_text(report)
     print(report[:1500])

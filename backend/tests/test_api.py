@@ -194,7 +194,7 @@ def test_celery_task_retries_then_succeeds(llm, invoice_pdf, monkeypatch):
         r = next(replies)
         if r:
             raise r
-        return dict(GOOD_LLM)
+        return dict(GOOD_LLM), "fake-model"
     monkeypatch.setattr("app.extraction.call_llm", flaky)
     worker.process_document.apply(args=[doc_id])  # eager: retries run inline
     with SessionLocal() as db:

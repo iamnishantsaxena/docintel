@@ -13,6 +13,10 @@ x-backend: &backend
     LLM_MODEL: ${LLM_MODEL:-qwen2.5:1.5b}
     LLM_API_KEY: ${LLM_API_KEY:-ollama}
     LLM_ENABLED: ${LLM_ENABLED:-true}
+    # Optional cloud model, tried first only when CLOUD_LLM_API_KEY is set (local Ollama becomes the fallback)
+    CLOUD_LLM_BASE_URL: ${CLOUD_LLM_BASE_URL:-}
+    CLOUD_LLM_MODEL: ${CLOUD_LLM_MODEL:-}
+    CLOUD_LLM_API_KEY: ${CLOUD_LLM_API_KEY:-}
   volumes:
     - uploads:/data/uploads
   extra_hosts:

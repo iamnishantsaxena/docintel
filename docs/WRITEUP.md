@@ -33,6 +33,7 @@ approval is refused server-side while any error-severity issue remains. Only app
 | Worker crash mid-task | `acks_late` + `reject_on_worker_lost`; stale `processing` rows become claimable again |
 | LLM timeout / 429 / 5xx | Row goes back to `queued`; Celery retries with exponential backoff (10 s → 300 s cap) |
 | LLM down for good | Last attempt produces a regex-only draft with an `llm_unavailable` warning instead of failing |
+| Cloud model down / rate-limited / out of credit | With `CLOUD_LLM_API_KEY` set, cloud is tried first and any failure falls through to the local model in the same call; retry only if every model is unreachable |
 | LLM 4xx (bad model name, etc.) | Not retried; regex fallback + `llm_bad_output` warning |
 | Garbage model output | Bad JSON → that chunk falls back; bad values → nulled individually with a warning |
 | Malformed PDFs | Magic-byte check, page limit, parser exceptions mapped to a clear `failed` status |
@@ -60,7 +61,7 @@ encryption at rest beyond what the volume provides.
 
 ## Testing
 
-`pytest` — 78 tests, ~2 s, no network or model needed (the LLM call is faked at the function boundary):
+`pytest` — 90 tests, ~2 s, no network or model needed (the LLM call is faked at the function boundary):
 
 - **Unit:** money/date parsing, coercion of wrong-typed model output, every validation rule, JSON extraction
   from chatty/fenced/truncated replies, HTTP error classification (timeouts, 429, 5xx, 4xx, wrong shape).
@@ -71,7 +72,7 @@ encryption at rest beyond what the volume provides.
   requeue → regex-only degrade, Celery retry then success, reprocess.
 
 The CI workflow (`.github/workflows/ci.yml`) is set up to run the same suite against **PostgreSQL 16** (SQLite locally), lints with ruff, type-checks and builds the
-frontend, runs the regex-only eval, then builds the Docker images and boots the full compose stack. (It hasn't run on GitHub yet; the suite has only been run locally against SQLite.)
+frontend, runs the regex-only eval, then builds the Docker images and boots the full compose stack. It passes on GitHub, including the compose smoke test.
 
 ## Measured results
 

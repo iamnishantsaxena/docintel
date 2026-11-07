@@ -57,6 +57,7 @@ curl -s localhost:8080/api/documents/1 -H "Authorization: Bearer $TOKEN"
 }
 ```
 
+`meta.model` is the model that actually answered (the cloud model, or the local one if the cloud failed).
 Money values are decimal **strings** to avoid float rounding. Dates are ISO `YYYY-MM-DD`.
 
 ## Issue codes

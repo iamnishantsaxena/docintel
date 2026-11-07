@@ -112,15 +112,34 @@ def parse_json_object(content: str) -> dict:
     return obj
 
 
-def call_llm(text: str) -> dict:
+def call_llm(text: str) -> tuple[dict, str]:
+    """
+    Ask each configured model in turn (cloud first if keyed, then local) and return (fields, model) from the
+    first usable answer. Raises LLMUnavailable only if every model was unreachable, so the job is retried;
+    otherwise LLMBadOutput, and that chunk falls back to pattern matching.
+    """
+    errors: list[Exception] = []
+    for base_url, model, api_key in settings.llm_endpoints():
+        try:
+            return chat_completion(text, base_url, model, api_key), model
+        except (LLMUnavailable, LLMBadOutput) as e:
+            log.warning("model %s failed: %s", model, e)
+            errors.append(e)
+    if errors and all(isinstance(e, LLMUnavailable) for e in errors):
+        raise LLMUnavailable("; ".join(map(str, errors)))
+    raise LLMBadOutput("; ".join(map(str, errors)) or "no LLM endpoint configured")
+
+
+def chat_completion(text: str, base_url: str, model: str, api_key: str) -> dict:
     """One OpenAI-compatible chat completion. Works against Ollama, Groq, OpenAI, vLLM, etc."""
     try:
         r = httpx.post(
-            f"{settings.llm_base_url.rstrip('/')}/chat/completions",
-            headers={"Authorization": f"Bearer {settings.llm_api_key}"},
+            f"{base_url.rstrip('/')}/chat/completions",
+            headers={"Authorization": f"Bearer {api_key}"},
             json={
-                "model": settings.llm_model,
+                "model": model,
                 "temperature": 0,
+                "max_tokens": settings.llm_max_tokens,
                 "response_format": {"type": "json_object"},
                 "messages": [{"role": "user", "content": PROMPT.replace("{text}", text)}],
             },
@@ -208,22 +227,25 @@ def extract(text_pages: list[str], use_llm: bool | None = None) -> tuple[dict, l
     use_llm = settings.llm_enabled if use_llm is None else use_llm
     text = "\n\n".join(text_pages)
     issues: list[dict] = []
-    meta = {"model": settings.llm_model if use_llm else None, "llm_used": False, "chunks": 0}
+    meta = {"model": None, "llm_used": False, "chunks": 0}
 
     llm_raw: dict = {}
     if use_llm:
         chunks = chunk_pages(text_pages, settings.llm_max_chars)
         meta["chunks"] = len(chunks)
-        results = []
+        results, models = [], []
         for chunk in chunks:
             try:
-                results.append(call_llm(chunk))
+                fields, model = call_llm(chunk)
+                results.append(fields)
+                models.append(model)
             except LLMBadOutput as e:
                 log.warning("bad model output: %s", e)
                 issues.append({"field": None, "code": "llm_bad_output", "severity": "warning",
                                "message": f"{e}; fell back to pattern matching for this part"})
         llm_raw = merge_chunks(results)
         meta["llm_used"] = bool(results)
+        meta["model"] = ", ".join(dict.fromkeys(models)) or None  # which model(s) actually answered
 
     llm_fields, llm_issues = coerce(llm_raw)
     regex_fields, _ = coerce(regex_extract(text))

@@ -84,6 +84,51 @@ Line items are the weak spot for every model: `line_items_exact` is 47–77 % ev
 right — the misses are wrong digits in one row (or rows dropped on long multipage invoices), and the model's
 row values override the regex table parse.
 
+### Third-party template set (Northwind "Company Documents") — measured
+
+A layout we didn't write, so neither the regex nor the prompt was tuned to it.
+
+- **Source:** the "Company Documents" PDF set (Northwind sample data; one template per type), placed locally in
+  `dataset/`. It is not committed: the license hasn't been checked, and 1,660 near-identical invoices/POs add little
+  over a sample.
+- **Sample:** `python -m eval.import_company_docs --n 50`. That is 50 seeded order IDs, each as an invoice and a
+  purchase order, so **100 PDFs**. The sample includes the set's only two-page document (25 line items).
+- **Ground truth:** parsed from the PDF text by template regexes, then cross-checked. Every invoice's lines
+  equal its PO's lines (two layouts, same order), and Σ qty × price equals the printed total. All 50 orders
+  passed.
+  - It is exact for this template, but it is **not manually verified** yet:
+    `eval/dataset/company/VERIFY.md` lists 30 files to tick by hand.
+  - Fields that aren't printed are null: supplier, tax, currency, due date, subtotal, and PO number on
+    invoices. A PO's own number counts as its `po_number`, the same convention as the synthetic set.
+  - `customer_name` is the contact person. Line amount = qty × price, which is implied but never printed.
+  - 3 of 50 invoices print float artefacts (`TotalPrice 268.79999999999995`). Truth rounds them to cents.
+- **Run:** 2026-11-07, same MacBook Air M2 8 GB, Ollama, qwen2.5:1.5b, with the 2048-token reply cap
+  (the synthetic runs above predate the cap). Reports: `eval/results/regex-only_company.md`,
+  `eval/results/llm_qwen2.5_1.5b_company.md`.
+
+The report now splits accuracy two ways. **Printed fields**: does it read what's there? **Not-printed fields left
+empty**: does it avoid inventing values? On this set, 6 of the 13 checks are not printed, so the overall figure
+mostly measures restraint.
+
+| | Overall | Printed fields | Not-printed left empty | Median / max s per doc |
+|---|---|---|---|---|
+| Regex only | 57.8 % | **21.6 %** (151/700) | 100 % | 0.01 / 0.03 |
+| qwen2.5:1.5b | 83.8 % | **84.9 %** (594/700) | **82.5 %** (495/600) | 7.8 / 46.1 |
+
+- **Regex alone breaks on an unfamiliar layout.** It found 21.6 % of printed values, against 85.8 % on the
+  synthetic set. It knows none of `Order ID`, `Contact Name` or `TotalPrice`. This is the clearest evidence for
+  the model.
+- **The model reads the core fields well.** Date 100 %, invoice total 100 %, document type 100 %, number 94 %.
+- **It invents values that aren't printed.** It gave a currency on **all 50 invoices** (guessed from the
+  customer's country: EUR ×23, USD ×17, others ×10). It copied the total into `subtotal` on all 50. It wrote
+  `tax: 0.00` on 2.
+- **Customer code instead of contact name** on 28 of 50 invoices (e.g. `VINET` for Paul Henriot).
+- **Line items are the weak spot.** Only 50 % are exactly right:
+  - On **12 of 50 POs it returned no line items at all**. Several of those also lost the document number.
+  - Where no line amount is printed, it computes one itself and often gets the arithmetic wrong
+    (8 × 31.20 → 251.20). The `line_amount_mismatch` rule flags each such row and blocks approval, so this costs
+    reviewer time but doesn't reach an export.
+
 ## Known failure cases
 
 Observed in the regex-only run or found while building; each has a test or an eval case that shows it.
@@ -104,5 +149,9 @@ Observed in the regex-only run or found while building; each has a test or an ev
 | 12 | Non-US number/date formats in regex (`1.234,56` is handled; labels are English-only) | `test_parse_money` | `parse_money` handles both separators | Regex labels are English only |
 | 13 | **Model mis-copies digits** (`46865.11` → `46685.11`, `287772.93` for `28772.93`) — mainly llama3.2 | subtotal/total misses in `llm_llama3.2_*.md` | `total_mismatch` / `line_items_sum_mismatch` errors fire when the numbers stop adding up, blocking approval | A transposition applied consistently to related fields passes (not measured how often) |
 | 14 | **Line items dropped on long multipage invoices** (8 of 16 rows) | qwen2.5:3b `multipage` misses | `line_items_sum_mismatch` fires when the subtotal is printed | Rows silently missing if no subtotal |
-| 15 | **Runaway generation** — model doesn't stop, call hits the timeout | qwen2.5:3b `016_multipage` | Timeout → retry → regex-only draft with `llm_unavailable` | No `max_tokens` cap on the request |
+| 15 | **Runaway generation** — model doesn't stop, call hits the timeout | qwen2.5:3b `016_multipage` | Replies are capped at `LLM_MAX_TOKENS` (default 2048), so a runaway reply ends as truncated JSON → that chunk falls back to regex with `llm_bad_output`; timeout → retry → regex-only draft remains the backstop | The qwen2.5:3b numbers above were measured before the cap existed |
 | 16 | Supplier and customer swapped | qwen2.5:1.5b `015_unlabelled_supplier` | – | No rule can tell which party is which |
+| 17 | **Invented currency** guessed from the country when none is printed | all 50 invoices, company set | `unknown_currency` only fires for non-ISO codes, so this passes | No "not in source" check for currency |
+| 18 | **Model does arithmetic badly** when line amounts aren't printed (8 × 31.20 → 251.20) | exact-match misses with the right row count: 19 invoices, 17 POs (those inspected were arithmetic) | `line_amount_mismatch` error blocks approval | Could compute missing amounts in code instead of asking the model |
+| 19 | **Empty line items** on a simple PO layout (`Product ID: Product: Quantity: Unit Price:` header) | 12 of 50 POs, company set | `line_items_sum_mismatch` can't fire (POs print no total); reviewer sees an empty table | — |
+| 20 | Customer code used as customer name (`VINET`) | 28 of 50 invoices, company set | — | Ambiguous by design: the document prints both |

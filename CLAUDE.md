@@ -24,8 +24,9 @@ Dev servers: `.claude/launch.json` at the repo root (`api-dev` = SQLite + `CELER
 
 ## Architecture (see docs/ARCHITECTURE.md)
 
-- `app/extraction.py` — the only place that calls the model (`call_llm`, OpenAI-compatible HTTP via httpx, no
-  LangChain). Raises `LLMUnavailable` (retryable) vs `LLMBadOutput` (fall back). `extract()` returns
+- `app/extraction.py` — the only place that calls the model. `call_llm` tries `settings.llm_endpoints()` in order
+  (cloud if `CLOUD_LLM_API_KEY` is set, then local) and returns `(fields, model)`; `chat_completion` is the one
+  OpenAI-compatible HTTP call (httpx, no LangChain). Raises `LLMUnavailable` (retryable) vs `LLMBadOutput` (fall back). `extract()` returns
   `(fields_json, issues, meta)`.
 - `app/fields.py` — `Fields`/`LineItem` schema + `coerce()`: untrusted dict → typed fields, bad values become
   null + `unparseable_value` issue. Money is `Decimal`, stored in JSON as strings.

@@ -1,12 +1,15 @@
 # Eval: regex-only
 
-- Run: 2026-10-29 13:08 UTC on macOS-27.0.1-arm64-arm-64bit
+- Run: 2026-11-07 12:22 UTC on macOS-27.0.1-arm64-arm-64bit
 - Dataset: `eval/dataset/synthetic` (30 PDFs)
-- Model: none @ -
-- Latency per document: median 0.01s, max 0.03s
+- Models tried, in order: none
+- Answered by: none (pattern matching) (30 docs)
+- Latency per document: median 0.01s, max 0.02s
 - LLM: not used
-
+- LLM errors: n/a
 - **Overall field accuracy: 86.7%** (338/390 field checks)
+- Accuracy on printed fields (truth has a value; incl. line items): 85.8% (314/366)
+- Not-printed fields correctly left empty (1 − invented-value rate): 100.0% (24/24)
 
 | Field | Accuracy |
 |---|---|

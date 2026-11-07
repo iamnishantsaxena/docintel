@@ -21,3 +21,6 @@ backend/.venv/
 backend/data/
 backend/.env
 .ruff_cache/
+dataset/
+backend/eval/dataset/real/
+backend/eval/dataset/company/

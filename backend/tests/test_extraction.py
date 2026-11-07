@@ -101,7 +101,14 @@ def test_unexpected_response_shape(monkeypatch):
 
 def test_successful_call(monkeypatch):
     _respond(monkeypatch, _chat('{"total": "12.50"}'))
-    assert call_llm("text") == {"total": "12.50"}
+    assert call_llm("text") == ({"total": "12.50"}, extraction.settings.llm_model)
+
+
+def test_reply_length_is_capped(monkeypatch):
+    sent = {}
+    monkeypatch.setattr(extraction.httpx, "post", lambda *a, **kw: sent.update(kw["json"]) or _chat("{}"))
+    call_llm("text")
+    assert sent["max_tokens"] == extraction.settings.llm_max_tokens
 
 
 # ---------- pipeline ----------
@@ -147,3 +154,75 @@ def test_extract_propagates_llm_unavailable_for_retry(llm):
 def test_extract_without_llm(llm):
     fields, _, meta = extract([TEXT], use_llm=False)
     assert llm.calls == 0 and fields["total"] == "495.00" and meta["model"] is None
+
+
+# ---------- Cloud-first, local fallback ----------
+
+CLOUD = {"cloud_llm_base_url": "https://cloud.example/v1", "cloud_llm_model": "cloud-m", "cloud_llm_api_key": "k"}
+
+
+def _endpoints(monkeypatch, replies: dict, **cfg):
+    """Configure endpoints and answer per base URL: a response, or an exception to raise."""
+    for k, v in cfg.items():
+        monkeypatch.setattr(extraction.settings, k, v)
+    tried = []
+
+    def fake_post(url, **kw):
+        tried.append(kw["json"]["model"])
+        r = next(v for base, v in replies.items() if url.startswith(base))
+        if isinstance(r, Exception):
+            raise r
+        return r
+    monkeypatch.setattr(extraction.httpx, "post", fake_post)
+    return tried
+
+
+def test_no_cloud_key_means_local_only(monkeypatch):
+    tried = _endpoints(monkeypatch, {"http://localhost": _chat('{"total": "1"}')},
+                       **{**CLOUD, "cloud_llm_api_key": ""})
+    assert call_llm("t") == ({"total": "1"}, extraction.settings.llm_model) and tried == [extraction.settings.llm_model]
+
+
+def test_cloud_key_makes_cloud_first(monkeypatch):
+    tried = _endpoints(monkeypatch, {"https://cloud": _chat('{"total": "2"}')}, **CLOUD)
+    assert call_llm("t") == ({"total": "2"}, "cloud-m") and tried == ["cloud-m"]  # local never called
+
+
+@pytest.mark.parametrize("cloud_fails", [httpx.ConnectError("down"), httpx.Response(429, text="slow down"),
+                                         httpx.Response(402, text="out of credit"), _chat("not json")])
+def test_cloud_failure_falls_back_to_local(monkeypatch, cloud_fails):
+    tried = _endpoints(monkeypatch, {"https://cloud": cloud_fails, "http://localhost": _chat('{"total": "3"}')},
+                       **CLOUD)
+    assert call_llm("t") == ({"total": "3"}, extraction.settings.llm_model)
+    assert tried == ["cloud-m", extraction.settings.llm_model]
+
+
+def test_all_unreachable_is_retryable(monkeypatch):
+    _endpoints(monkeypatch, {"https://cloud": httpx.ConnectError("x"), "http://localhost": httpx.ReadTimeout("y")},
+               **CLOUD)
+    with pytest.raises(LLMUnavailable):
+        call_llm("t")
+
+
+def test_any_bad_output_and_none_usable_falls_back_to_regex(monkeypatch):
+    _endpoints(monkeypatch, {"https://cloud": _chat("garbage"), "http://localhost": httpx.ConnectError("x")},
+               **CLOUD)
+    with pytest.raises(LLMBadOutput):  # not retried: extract() uses pattern matching for this chunk
+        call_llm("t")
+
+
+def test_cloud_only_deployment_skips_local(monkeypatch):
+    tried = _endpoints(monkeypatch, {"https://cloud": _chat('{"total": "4"}')}, **CLOUD, llm_base_url="")
+    assert call_llm("t")[1] == "cloud-m" and tried == ["cloud-m"]
+
+
+def test_cloud_key_without_url_or_model_fails_at_startup():
+    from app.config import Settings
+    with pytest.raises(ValueError, match="CLOUD_LLM"):
+        Settings(jwt_secret="x" * 32, cloud_llm_api_key="k")
+
+
+def test_meta_records_the_model_that_answered(monkeypatch, invoice_pdf):
+    _endpoints(monkeypatch, {"https://cloud": _chat('{"total": "495.00"}')}, **CLOUD)
+    _, _, meta = extract(pdf_to_pages(invoice_pdf))
+    assert meta["model"] == "cloud-m"
